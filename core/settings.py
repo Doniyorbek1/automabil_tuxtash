@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-qbi!*ql1=)=7&#55d_#*vd)7hv@pvj5&yjj$b7sdns9rgeu)0!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+# CORS
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = ['*']
 
 
 # Application definition
@@ -41,9 +46,11 @@ INSTALLED_APPS = [
     # test_api
     'test_api',
     'rest_framework',
+    'corsheaders',
     ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
