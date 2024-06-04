@@ -69,6 +69,7 @@ class ParkingView(APIView):
         elif request.user.is_superuser:
             parkings = Parking.objects.all()
             serializer = ParkingSerializer(parkings, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({'error':"only superuser can use this function"}, status=status.HTTP_423_LOCKED)
     def post(self, request: Request, pk:int):
         parking = Parking.objects.get(id=pk)
